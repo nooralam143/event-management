@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContex } from "../Provider/AuthProvider";
 
 
 const Register = () => {
+    const [registerError, setRegisterError]=useState('');
+    const [success, setSuccess]=useState('');
     const { createUser } = useContext(AuthContex);
     const handalRegister = e => {
         e.preventDefault();
@@ -14,14 +16,33 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
         console.log(name, photo, email, password);
-        // create user
-        createUser(email, password)
-            .then(result => {
-                console.log(result.user);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+       
+// Registration validation start
+if (password.length < 6) {
+    setRegisterError('password should have 6 characters')
+    return;
+}
+if (!/[A-Z]/.test(password)) { // Check for the absence of a capital letter
+    setRegisterError('Password should have a capital letter');
+    return;
+}
+if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>/?]/.test(password)) {
+    setRegisterError('Password should have at least one special character');
+    return;
+}
+// Registration validation End
+setRegisterError('');
+setSuccess('');
+// create user
+createUser(email, password)
+    .then(result => {
+        console.log(result.user);
+        setSuccess('User created successfully');
+    })
+    .catch(error => {
+        setRegisterError(error.message);
+    })
+
     }
     return (
         <div>
@@ -60,6 +81,12 @@ const Register = () => {
                                 <button className="btn bg-pink-600 text-white hover:bg-pink-600">Register</button>
                             </div>
                         </form>
+                        {
+                            registerError && <p className="text-center text-red-700">{registerError}</p>
+                        }
+                        {
+                            success && <p className="text-center text-green-700">{success}</p>
+                        }
                         <div className="text-center pb-8 ">
                             <Link to="/login">
                                 have a account ? <span className="text-blue-600">Login Here</span>
