@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContex } from "../Component/Provider/AuthProvider";
+import {AuthContext } from "../Component/Provider/AuthProvider";
 import './Header.css'
 
 const Navbar = () => {
-  const {user, logOut}=useContext(AuthContex);
+  const {user, logOut}=useContext(AuthContext);
   const handalSignout =()=>{
     logOut()
     .then(result =>{
@@ -18,7 +18,12 @@ const Navbar = () => {
     <li><NavLink to="/">Home</NavLink></li>
     <li><NavLink to="/about">About</NavLink></li>
     <li><NavLink to="/services">Services</NavLink></li>
-    <li><NavLink to="/gallery">Gallery</NavLink></li>
+    {user &&
+      <>
+       <li><NavLink to="/profile">profile</NavLink></li>
+    <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+      </>
+    }
   </>
     return (
       <nav>
@@ -42,11 +47,19 @@ const Navbar = () => {
   </div>
   
   <div className="navbar-end">
+    {
+      
+    }
   {
     user ?
+    <>
+    <span>{user.email}</span>
     <button className="btn hover:bg-primary text-white bg-pink-600" onClick={handalSignout}>Sign out</button>
+    </>
     :
-    <Link to="/login"><button className="btn hover:bg-primary text-white bg-pink-600">Login/Register</button></Link>
+    <Link to="/login">
+      <button className="btn btn-sm">Login/Register</button>
+      </Link>
   } 
   </div>
 </div>

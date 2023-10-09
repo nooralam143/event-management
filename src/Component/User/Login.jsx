@@ -1,9 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContex } from "../Provider/AuthProvider";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
-    const {signIn}=useContext(AuthContex);
+    const {signIn}=useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('location i n the login page', location);
     const handalLogin=e=>{
         e.preventDefault();
         console.log(e.currentTarget);
@@ -12,15 +15,20 @@ const Login = () => {
         const password = form.get('password');
         console.log(email, password);
         signIn(email, password)
-        .then(result =>{
+        .then((result) => {
             console.log(result.user);
-        })
+            e.target.reset();
+             // navigate after login
+            //  navigate(location?.state ? location.state : '/');
+            navigate('/');
+          })
         .catch(error =>{
             console.log(error);
         })
     }
     return (
         <div>
+    
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
