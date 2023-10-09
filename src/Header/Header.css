@@ -1,0 +1,17 @@
+nav a{
+    margin-right: 20px;
+}
+nav a:active{
+    color: white;
+}
+.active{
+    font-weight: bold;
+    background: #1c1c1c;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}

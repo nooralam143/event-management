@@ -7,6 +7,14 @@ import {
 import './index.css'
 import Root from './Component/Routes/Root';
 import ErrorPage from './Component/ErrorPage/ErrorPage';
+import Home from './Home/Home';
+import About from './Component/Page/About';
+import Services from './Component/Page/Services';
+import Gallery from './Component/Page/Gallery';
+import Login from './Component/User/Login';
+import Register from './Component/User/Register';
+import ServiceDetails from './Component/Page/ServiceDetails';
+import AuthProvider from './Component/Provider/AuthProvider';
 
 
 const router = createBrowserRouter([
@@ -17,7 +25,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Root></Root> ,
+        element:<Home></Home> ,
+      },
+      {
+        path: "/about",
+        element:<About></About> ,
+      },
+      {
+        path: "/services",
+        element:<Services></Services> ,
+      },
+      {
+        path: "/services/:id",
+        element:<ServiceDetails></ServiceDetails> ,
+        loader:()=>fetch('/data.json'),
+      },
+      {
+        path: "/gallery",
+        element:<Gallery></Gallery> ,
+      },
+      {
+        path: "/login",
+        element:<Login></Login> ,
+      },
+      {
+        path: "/register",
+        element:<Register></Register> ,
       },
     ],
   },
@@ -26,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

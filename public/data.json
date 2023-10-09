@@ -1,0 +1,52 @@
+{
+  "eventServices": [
+    {
+      "id": 1,
+      "name": "Wedding Photography",
+      "imageLink": "https://i.ibb.co/HrN2N7k/Wedding-Photography.jpg",
+      "price": "$1,500",
+      "shortDescription": "Capture every special moment of your wedding day with our professional photography services.",
+      "longDescription": "Our wedding photography services are designed to capture every special moment of your big day. Our experienced photographers use state-of-the-art equipment to ensure that your memories are beautifully preserved. Whether it's candid shots that capture the raw emotions or carefully posed portraits, we'll create a stunning album that tells the story of your special day. With a keen eye for detail and a passion for storytelling, our photographers will create images that you'll cherish for a lifetime. Let us be a part of your wedding journey and turn your moments into lasting memories."
+    },
+    {
+      "id": 2,
+      "name": "Floral Arrangements",
+      "imageLink": "https://i.ibb.co/myBSXpY/Floral-Arrangements.jpg",
+      "price": "$800",
+      "shortDescription": "Add a touch of elegance to your wedding with stunning floral arrangements and decorations.",
+      "longDescription": "Elevate the ambiance of your wedding with our exquisite floral arrangements. Our talented florists will work closely with you to design custom bouquets, centerpieces, and aisle decorations that perfectly match your theme and style. From classic roses to exotic blooms, we'll make your wedding venue come alive with color, fragrance, and elegance. With attention to every detail, our floral designs will create an unforgettable atmosphere that complements your vision. Make your wedding day truly special with our beautiful floral creations."
+    },
+    {
+      "id": 3,
+      "name": "Catering Services",
+      "imageLink": "https://i.ibb.co/GP5DrND/Catering-Services.jpg",
+      "price": "$2,000",
+      "shortDescription": "Delight your guests with a delicious and diverse menu of culinary delights.",
+      "longDescription": "Treat your guests to a culinary experience they won't forget with our catering services. Our expert chefs and catering team will craft a personalized menu tailored to your preferences. From delectable appetizers to mouthwatering desserts, our offerings include a wide range of options, including vegetarian and vegan dishes. We take pride in using the finest ingredients to create dishes that are both visually stunning and incredibly flavorful. Let us elevate your wedding feast, ensuring that your guests are delighted by the gastronomic delights we serve."
+    },
+    {
+      "id": 4,
+      "name": "Venue Decoration",
+      "imageLink": "https://i.ibb.co/D8LD7ZH/Venue-Decoration.jpg",
+      "price": "$1,200",
+      "shortDescription": "Transform your wedding venue into a dreamy and enchanting space with our decoration services.",
+      "longDescription": "Create a magical and enchanting atmosphere at your wedding venue with our decoration services. Our experienced decorators have an eye for detail and a passion for turning spaces into dreamscapes. From elegant drapery and enchanting lighting to exquisite table settings and thematic props, we'll transform your vision into a reality. We understand that every wedding is unique, and we'll work closely with you to ensure that your venue reflects your personal style and creates a lasting impression on your guests."
+    },
+    {
+      "id": 5,
+      "name": "Live Music Entertainment",
+      "imageLink": "https://i.ibb.co/yPqX6tM/Live-Music-Entertainment.jpg",
+      "price": "$1,800",
+      "shortDescription": "Set the mood with live music and entertainment that will keep your guests dancing all night.",
+      "longDescription": "Turn your wedding into a vibrant celebration with our live music and entertainment services. Our talented musicians and performers are dedicated to creating an unforgettable atmosphere that will keep your guests dancing and singing all night long. Whether you prefer the energy of a live band, the versatility of a DJ, or the elegance of a string quartet, we have the talent and experience to cater to your musical preferences. Let us set the perfect mood for your wedding, making it a day filled with melodies, rhythms, and memories."
+    },
+    {
+      "id": 6,
+      "name": "Wedding Planning",
+      "imageLink": "https://i.ibb.co/wR7t03B/Wedding-Planning.jpg",
+      "price": "$2,500",
+      "shortDescription": "Let our expert wedding planners take care of every detail to make your day stress-free and perfect.",
+      "longDescription": "Experience a stress-free and perfect wedding day with our expert wedding planning services. From choosing the ideal venue to coordinating vendors and managing timelines, we'll handle every aspect of your wedding planning journey. Our experienced team will work closely with you to bring your unique vision to life, ensuring that your wedding day is everything you've dreamed of and more. With meticulous attention to detail and a passion for perfection, we'll create a seamless and memorable celebration that reflects your style and love story."
+    }
+  ]
+}
