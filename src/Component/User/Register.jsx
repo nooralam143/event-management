@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
-    const [registerError, setRegisterError]=useState('');
-    const [success, setSuccess]=useState('');
-    const { createUser } = useContext(AuthContext);
+    const [registerError, setRegisterError] = useState('');
+    const [success, setSuccess] = useState('');
+    const { createUser, signinWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
     const handalRegister = e => {
         e.preventDefault();
         console.log(e.currentTarget);
@@ -16,33 +19,57 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
         console.log(name, photo, email, password);
-       
-// Registration validation start
-if (password.length < 6) {
-    setRegisterError('password should have 6 characters')
-    return;
-}
-if (!/[A-Z]/.test(password)) { // Check for the absence of a capital letter
-    setRegisterError('Password should have a capital letter');
-    return;
-}
-if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>/?]/.test(password)) {
-    setRegisterError('Password should have at least one special character');
-    return;
-}
-// Registration validation End
-setRegisterError('');
-setSuccess('');
-// create user
-createUser(email, password)
-    .then(result => {
-        console.log(result.user);
-        setSuccess('User created successfully');
-    })
-    .catch(error => {
-        setRegisterError(error.message);
-    })
 
+        // Registration validation start
+        if (password.length < 6) {
+            setRegisterError('password should have 6 characters')
+            return;
+        }
+        if (!/[A-Z]/.test(password)) { // Check for the absence of a capital letter
+            setRegisterError('Password should have a capital letter');
+            return;
+        }
+        if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>/?]/.test(password)) {
+            setRegisterError('Password should have at least one special character');
+            return;
+        }
+        // Registration validation End
+        setRegisterError('');
+        setSuccess('');
+        // create user
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                setSuccess('User created successfully');
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo,
+                })
+                .then(() => {
+                    console.log('profile updted');
+                })
+                .catch(error =>{
+                    console.log(error.message);
+                    
+                })
+                navigate(location?.state?.from || '/');
+            })
+            .catch(error => {
+                setRegisterError(error.message);
+            })
+
+
+    }
+
+    const handalGoogleSignIn =()=>{
+        signinWithGoogle()
+        .then( result =>{
+            console.log(result.user);
+            navigate(location?.state || '/');
+        })
+        .catch(error =>{
+            console.log(error.message);
+        })
     }
     return (
         <div>
@@ -87,10 +114,13 @@ createUser(email, password)
                         {
                             success && <p className="text-center text-green-700">{success}</p>
                         }
-                        <div className="text-center pb-8 ">
+                        <div className="text-center pb-2 ">
                             <Link to="/login">
                                 have a account ? <span className="text-blue-600">Login Here</span>
                             </Link>
+                        </div>
+                        <div className="text-center pb-8 ">   
+                                 <span className="btn text-blue-600" onClick={handalGoogleSignIn}>Google</span>
                         </div>
 
                     </div>

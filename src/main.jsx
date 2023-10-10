@@ -10,7 +10,6 @@ import ErrorPage from './Component/ErrorPage/ErrorPage';
 import Home from './Home/Home';
 import About from './Component/Page/About';
 import Services from './Component/Page/Services';
-import Gallery from './Component/Page/Gallery';
 import Login from './Component/User/Login';
 import Register from './Component/User/Register';
 import ServiceDetails from './Component/Page/ServiceDetails';
